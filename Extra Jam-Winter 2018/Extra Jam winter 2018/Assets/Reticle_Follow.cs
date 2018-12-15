@@ -17,10 +17,10 @@ public class Reticle_Follow : MonoBehaviour {
 
         if (Physics.Raycast(ray, out hit))
         {
-            transform.position = Vector3.Lerp(
+            transform.position = Vector3.MoveTowards(
                 new Vector3(transform.position.x, 10, transform.position.z),
                 new Vector3(hit.point.x, 10, hit.point.z),
-                0.04f);
+                5f*Time.fixedDeltaTime);
         }
         
 
