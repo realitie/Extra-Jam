@@ -52,6 +52,23 @@ public class AI_Movement : MonoBehaviour {
 
     private void moveDirection()
     {
+        if (transform.position.z > 19.5f)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, -(transform.position.z - 0.5f));
+        }
+        else if (transform.position.z < -19.5f)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, -(transform.position.z + 0.5f));
+        }
+        if (transform.position.x > 32.75f)
+        {
+            transform.position = new Vector3(-(transform.position.x - 0.5f), transform.position.y, transform.position.z);
+        }
+        else if (transform.position.x < -32.75f)
+        {
+            transform.position = new Vector3(-(transform.position.x + 0.5f), transform.position.y, transform.position.z);
+        }
+
         if (Dir == 1)
         {
             GetComponent<MeshRenderer>().material = down;
