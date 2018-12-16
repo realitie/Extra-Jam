@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Mayor
+  - Crowd
   layers:
   - Default
   - TransparentFX

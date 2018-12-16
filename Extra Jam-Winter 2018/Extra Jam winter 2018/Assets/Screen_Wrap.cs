@@ -14,10 +14,12 @@ public class Screen_Wrap : MonoBehaviour {
 		
 	}
 
+
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log(other.transform.position);
-
-        other.transform.position = new Vector3(other.transform.position.x*(-1f), other.transform.position.y, other.transform.position.z* (-1f));
+      
+            other.transform.position = new Vector3(other.transform.position.x * (-1f), other.transform.position.y, other.transform.position.z * (-1f));
+      
+        
     }
 }

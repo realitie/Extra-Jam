@@ -6,9 +6,13 @@ public class Assassin_Control : MonoBehaviour {
     // Use this for initialization
     private float speed = 3f;
     private bool running = false;
-    private bool jumping = false;
-    private bool falling = false;
+    public Material up;
+    public Material down;
+    public Material left;
+    public Material right;
+
     void Start () {
+    
         
 
     }
@@ -48,18 +52,32 @@ public class Assassin_Control : MonoBehaviour {
             transform.Translate((Vector3.forward + Vector3.left) * speed * 0.707f * Time.fixedDeltaTime);
         else if (Input.GetKey(KeyCode.S) & Input.GetKey(KeyCode.A))
             transform.Translate((Vector3.forward + Vector3.right) * speed * 0.707f * Time.fixedDeltaTime);
+
         else if (Input.GetKey(KeyCode.A))
+        {
             transform.Translate(Vector3.right * speed * Time.fixedDeltaTime);
+            GetComponent<MeshRenderer>().material = left;
+
+        }
+            
         else if (Input.GetKey(KeyCode.D))
         {
+            GetComponent<MeshRenderer>().material = right;
             transform.Translate(Vector3.left * speed * Time.fixedDeltaTime);
         }
+            
         else if (Input.GetKey(KeyCode.W))
         {
+            GetComponent<MeshRenderer>().material = up;
             transform.Translate(Vector3.back * speed * Time.fixedDeltaTime);
         }
+            
         else if (Input.GetKey(KeyCode.S))
+        {
+            GetComponent<MeshRenderer>().material = down;
             transform.Translate(Vector3.forward * speed * Time.fixedDeltaTime);
+        }
+            
 
         transform.position = new Vector3(transform.position.x, (transform.position.z + 20f) / 1000f, transform.position.z); 
     }

@@ -6,12 +6,15 @@ public class AI_Movement : MonoBehaviour {
 
     // Use this for initialization
     private float speed = 3f;
-    private bool moving = false;
-    private bool jumping = false;
-    private bool falling = false;
     private int Dir;
+    private int Dir2;
     private float timer = 1f;
     private float clock = 0f;
+
+    public Material up;
+    public Material down;
+    public Material left;
+    public Material right;
 
     void Start()
     {
@@ -51,40 +54,84 @@ public class AI_Movement : MonoBehaviour {
     {
         if (Dir == 1)
         {
+            GetComponent<MeshRenderer>().material = down;
             transform.Translate(Vector3.forward * speed * Time.fixedDeltaTime);
         }
         if (Dir == 2)
         {
+            GetComponent<MeshRenderer>().material = up;
             transform.Translate(Vector3.back * speed * Time.fixedDeltaTime);
         }
         if (Dir == 3)
         {
+            GetComponent<MeshRenderer>().material = right;
             transform.Translate(Vector3.left * speed * Time.fixedDeltaTime);
         }
         if (Dir == 4)
         {
+            GetComponent<MeshRenderer>().material = left;
             transform.Translate(Vector3.right * speed * Time.fixedDeltaTime);
         }
         if (Dir == 5)
         {
+            if(Dir2 == 1)
+            {
+                GetComponent<MeshRenderer>().material = down;
+            }
+            else if(Dir2 == 2)
+            {
+                GetComponent<MeshRenderer>().material = left;
+            }
+
             transform.Translate((Vector3.forward + Vector3.right) * speed * 0.707f * Time.fixedDeltaTime);
         }
         if (Dir == 6)
         {
+            if (Dir2 == 1)
+            {
+                GetComponent<MeshRenderer>().material = right;
+            }
+            else if (Dir2 == 2)
+            {
+                GetComponent<MeshRenderer>().material = down;
+            }
             transform.Translate((Vector3.forward + Vector3.left) * speed * 0.707f * Time.fixedDeltaTime);
+
         }
         if (Dir == 7)
         {
+            if (Dir2 == 1)
+            {
+                GetComponent<MeshRenderer>().material = right;
+            }
+            else if (Dir2 == 2)
+            {
+                GetComponent<MeshRenderer>().material = up;
+            }
             transform.Translate((Vector3.left + Vector3.back) * speed * 0.707f * Time.fixedDeltaTime);
         }
         if (Dir == 8)
         {
+            if (Dir2 == 1)
+            {
+                GetComponent<MeshRenderer>().material = left;
+            }
+            else if (Dir2 == 2)
+            {
+                GetComponent<MeshRenderer>().material = up;
+            }
             transform.Translate((Vector3.right + Vector3.back) * speed * 0.707f * Time.fixedDeltaTime);
         }
     }
 
     void randomDir()
     {
-        Dir = Mathf.RoundToInt(Random.Range(0.5f, 8.5f));
+        Dir = Mathf.RoundToInt(Random.Range(0.5f, 8.49f));
+        Dir2 = Mathf.RoundToInt(Random.Range(1f, 2f));
+
+        if(Dir > 8|Dir < 1)
+        {
+            Debug.Log(Dir);
+        }
     }
 }
