@@ -255,7 +255,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Player 2\n\nObjective: Take out all your targets\n\nControls: \nWASD(movement)\nShift(Run)\nSpace(Stab)\n\nTips:
+  m_Text: "Player 2\n\nObjective: Take out all your targets but one\n\nControls: \nWASD(movement)\nShift(Run)\nSpace(Stab)\n\nTips:
     If you kill a civilian who isn't \nyour target, you take their clothes"
 --- !u!222 &226172886
 CanvasRenderer:

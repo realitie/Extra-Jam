@@ -54,7 +54,7 @@ public class Reticle : MonoBehaviour {
             transform.position = Vector3.MoveTowards(
                 new Vector3(transform.position.x, 10, transform.position.z),
                 new Vector3(hit.point.x, 10, hit.point.z),
-                5.5f*Time.fixedDeltaTime);
+                5.7f*Time.fixedDeltaTime);
             /*if (check)
             {
                     

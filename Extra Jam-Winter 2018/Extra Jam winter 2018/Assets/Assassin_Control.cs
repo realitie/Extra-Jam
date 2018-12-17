@@ -42,7 +42,7 @@ public class Assassin_Control : MonoBehaviour {
     public Material kright2;
     public Material kright3;
     public Material kright4;
-
+    private float indicatorCD= 0f;
     public MeshRenderer Photo;
     private int last = 4;
     private float animationTimer= 0f;
@@ -55,13 +55,22 @@ public class Assassin_Control : MonoBehaviour {
     void Start () {
         hit = new RaycastHit();
         transform.position = new Vector3(Random.Range(-30f, 30f), 1, Random.Range(-16f, 16f));
-
+        transform.GetChild(0).gameObject.SetActive(true);
     }
 
     // Update is called once per frame
     private void Update()
     {
-        
+        if(indicatorCD< 4f)
+        {
+            indicatorCD = indicatorCD + Time.deltaTime;
+
+        }
+        else
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
+        } 
+
 
         cCooldown = cCooldown + Time.deltaTime;
         if (targetCount >= 4)

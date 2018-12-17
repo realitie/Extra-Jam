@@ -29,7 +29,7 @@ public class blizzard : MonoBehaviour {
             timer2 = 0f;
             storm.GetComponent<Renderer>().material.color = new Color(1f, 1f, 1f, 1f);
         }
-        else if (timer < 10f)
+        else if (timer < 12f)
         {
             timer2 = timer2 + Time.deltaTime;
             storm.GetComponent<Renderer>().material.color = new Color(1f, 1f, 1f, 1 - timer2 / 2f);
