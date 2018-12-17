@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Reticle : MonoBehaviour {
 
-    private bool check = false;
+
     private bool shoot = false;
-    private float cCooldown = 11f;
+    private float cCooldown = 0f;
     public bool gameOver = false;
 
     public GameObject assassinWin;
@@ -18,15 +18,19 @@ public class Reticle : MonoBehaviour {
 	}
 
     private void Update()
+
     {
+        if (Input.GetKey(KeyCode.Escape))
+            Application.Quit();
+        if (cCooldown<= 8f)
         cCooldown = cCooldown + Time.deltaTime;
-        if (Input.GetMouseButton(1) & cCooldown > 10f)
+        if (cCooldown > 8f)
         {
-            check = true;
-        }
-        if (Input.GetMouseButton(0))
-        {
-            shoot = true;
+            transform.GetChild(1).gameObject.SetActive(false);
+            if (Input.GetMouseButton(0))
+            {
+                shoot = true;
+            }
         }
     }
 
@@ -78,7 +82,7 @@ public class Reticle : MonoBehaviour {
                     sniperWin.SetActive(true);
                     gameOver = true;
                 }
-                if (hit.collider.gameObject.tag == "Crowd"|hit.collider.gameObject.tag == "Target")
+                if (hit.collider.gameObject.tag == "Crowd")
                 {
                     /*omaigod you shot a civilian, assassin wins*/
                     hit.collider.GetComponent<AI_Movement>().enabled = false;

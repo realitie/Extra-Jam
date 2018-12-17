@@ -23,7 +23,7 @@ public class Assassin_Control : MonoBehaviour {
     public Material right2;
     public Material right3;
     public Material right4;
-
+    private float cCooldown = 0f;
     public GameObject assassinWin;
     public GameObject reticle;
     public Material kup1;
@@ -54,14 +54,16 @@ public class Assassin_Control : MonoBehaviour {
     private int targetCount= 0;
     void Start () {
         hit = new RaycastHit();
-        
+        transform.position = new Vector3(Random.Range(-30f, 30f), 1, Random.Range(-16f, 16f));
 
     }
 
     // Update is called once per frame
     private void Update()
     {
-        Debug.Log(targetCount);
+        
+
+        cCooldown = cCooldown + Time.deltaTime;
         if (targetCount >= 4)
         {
             assassinWin.SetActive(true);
@@ -69,12 +71,13 @@ public class Assassin_Control : MonoBehaviour {
 
         }
         Photo.material = down1;
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) & cCooldown>3f)
         {
             knife = true;
         }
         if (knife)
         {
+            
             knifeTimer = knifeTimer + Time.deltaTime;
         }
         if(knifeTimer> knifeClock)
@@ -193,6 +196,7 @@ public class Assassin_Control : MonoBehaviour {
                     if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y, transform.position.z + 1), Vector3.back, out hit) & hit.distance < 1.5f)
                     {
                         hit.collider.GetComponent<AI_Movement>().enabled = false;
+                        cCooldown = 0f;
 
                         if (hit.collider.gameObject.tag == "Target" & !hit.collider.gameObject.transform.GetChild(1).gameObject.activeSelf)
                         {
@@ -249,7 +253,7 @@ public class Assassin_Control : MonoBehaviour {
                     if ((Physics.Raycast(new Vector3(transform.position.x, transform.position.y, transform.position.z + 1), Vector3.forward, out hit) & hit.distance < 1.5f))
                     {
                         hit.collider.GetComponent<AI_Movement>().enabled = false;
-
+                        cCooldown = 0f;
                         if (hit.collider.gameObject.tag == "Target" & !hit.collider.gameObject.transform.GetChild(1).gameObject.activeSelf)
                         {
                             /*game over*/
@@ -280,9 +284,9 @@ public class Assassin_Control : MonoBehaviour {
                             left3 = hit.collider.GetComponent<AI_Movement>().left3;
                             left4 = hit.collider.GetComponent<AI_Movement>().left4;
                         }
-
+hit.collider.gameObject.transform.GetChild(1).gameObject.SetActive(true);
                     }
-                    hit.collider.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                    
                     GetComponent<MeshRenderer>().material = kdown2;
                 }
                 else if (knifeTimer < (knifeClock / 4f) * 3)
@@ -307,7 +311,7 @@ public class Assassin_Control : MonoBehaviour {
                     if ((Physics.Raycast(new Vector3(transform.position.x, transform.position.y, transform.position.z + 1), Vector3.left, out hit) & hit.distance < 1.5f))
                     {
                         hit.collider.GetComponent<AI_Movement>().enabled = false;
-
+                        cCooldown = 0f;
                         if (hit.collider.gameObject.tag == "Target" & !hit.collider.gameObject.transform.GetChild(1).gameObject.activeSelf)
                         {
                             /*game over*/
@@ -364,7 +368,7 @@ hit.collider.gameObject.transform.GetChild(1).gameObject.SetActive(true);
                     if ((Physics.Raycast(new Vector3(transform.position.x, transform.position.y, transform.position.z + 1), Vector3.right, out hit) & hit.distance < 1.5f))
                     {
                         hit.collider.GetComponent<AI_Movement>().enabled = false;
-
+                        cCooldown = 0f;
                         if (hit.collider.gameObject.tag == "Target" & !hit.collider.gameObject.transform.GetChild(1).gameObject.activeSelf)
                         {
                             /*game over*/
@@ -447,7 +451,7 @@ hit.collider.gameObject.transform.GetChild(1).gameObject.SetActive(true);
                 if ((Physics.Raycast(new Vector3(transform.position.x, transform.position.y, transform.position.z + 1), Vector3.forward, out hit) & hit.distance < 1.5f))
                 {
                     hit.collider.GetComponent<AI_Movement>().enabled = false;
-
+                    cCooldown = 0f;
                     if (hit.collider.gameObject.tag == "Target" & !hit.collider.gameObject.transform.GetChild(1).gameObject.activeSelf)
                     {
                         /*game over*/
@@ -531,7 +535,7 @@ hit.collider.gameObject.transform.GetChild(1).gameObject.SetActive(true);
                 if ((Physics.Raycast(new Vector3(transform.position.x, transform.position.y, transform.position.z + 1), Vector3.back, out hit) & hit.distance < 1.5f))
                 {
                     hit.collider.GetComponent<AI_Movement>().enabled = false;
-
+                    cCooldown = 0f;
                     if (hit.collider.gameObject.tag == "Target" & !hit.collider.gameObject.transform.GetChild(1).gameObject.activeSelf)
                     {
                         /*game over*/
@@ -610,7 +614,7 @@ hit.collider.gameObject.transform.GetChild(1).gameObject.SetActive(true);
                 if ((Physics.Raycast(new Vector3(transform.position.x, transform.position.y, transform.position.z + 1), Vector3.right, out hit) & hit.distance < 1.5f))
                 {
                     hit.collider.GetComponent<AI_Movement>().enabled = false;
-
+                    cCooldown = 0f;
                     if (hit.collider.gameObject.tag == "Target" & !hit.collider.gameObject.transform.GetChild(1).gameObject.activeSelf)
                     {
                         /*game over*/
@@ -689,7 +693,7 @@ hit.collider.gameObject.transform.GetChild(1).gameObject.SetActive(true);
                 if ((Physics.Raycast(new Vector3(transform.position.x, transform.position.y, transform.position.z + 1), Vector3.left, out hit) & hit.distance < 1.5f))
                 {
                     hit.collider.GetComponent<AI_Movement>().enabled = false;
-                    
+                    cCooldown = 0f;
                     if (hit.collider.gameObject.tag == "Target"& !hit.collider.gameObject.transform.GetChild(1).gameObject.activeSelf)
                     {
                         /*game over*/

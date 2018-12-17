@@ -63,9 +63,11 @@
   <ItemGroup>
     <Compile Include="Assets\AI_Movement.cs" />
     <Compile Include="Assets\Assassin_Control.cs" />
+    <Compile Include="Assets\blizzard.cs" />
     <Compile Include="Assets\ColourCopy.cs" />
     <Compile Include="Assets\Reticle.cs" />
     <Compile Include="Assets\Snowfall.cs" />
+    <Compile Include="Assets\Start_Game.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Jeremy/Documents/GitHub/Extra-Jam/Extra Jam-Winter 2018/Extra Jam winter 2018/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

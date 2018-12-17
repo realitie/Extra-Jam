@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 33553605350696462}
   - component: {fileID: 23913221879047786}
   - component: {fileID: 136485545390793484}
-  - component: {fileID: 114811864579174030}
   - component: {fileID: 114079531392945796}
   - component: {fileID: 54077395542115524}
   m_Layer: 0
@@ -113,17 +112,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f59917f9c40109949ae9dcf615b372a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114811864579174030
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1548268956121178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96a810b88e066f34e9f0b5055d652393, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  up1: {fileID: 0}
+  up2: {fileID: 0}
+  up3: {fileID: 0}
+  up4: {fileID: 0}
+  down1: {fileID: 0}
+  down2: {fileID: 0}
+  down3: {fileID: 0}
+  down4: {fileID: 0}
+  left1: {fileID: 0}
+  left2: {fileID: 0}
+  left3: {fileID: 0}
+  left4: {fileID: 0}
+  right1: {fileID: 0}
+  right2: {fileID: 0}
+  right3: {fileID: 0}
+  right4: {fileID: 0}
+  assassinWin: {fileID: 0}
+  reticle: {fileID: 0}
+  kup1: {fileID: 0}
+  kup2: {fileID: 0}
+  kup3: {fileID: 0}
+  kup4: {fileID: 0}
+  kdown1: {fileID: 0}
+  kdown2: {fileID: 0}
+  kdown3: {fileID: 0}
+  kdown4: {fileID: 0}
+  kleft1: {fileID: 0}
+  kleft2: {fileID: 0}
+  kleft3: {fileID: 0}
+  kleft4: {fileID: 0}
+  kright1: {fileID: 0}
+  kright2: {fileID: 0}
+  kright3: {fileID: 0}
+  kright4: {fileID: 0}
+  Photo: {fileID: 0}
 --- !u!136 &136485545390793484
 CapsuleCollider:
   m_ObjectHideFlags: 1
