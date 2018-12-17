@@ -4,10 +4,10 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - up: {fileID: 2100000, guid: 11feeee198e3bfa408fa7ee32ed5c7dc, type: 2}
-  - down: {fileID: 2100000, guid: cb4f20b4e255179419a2b6be45fb6061, type: 2}
-  - left: {fileID: 2100000, guid: 4b3dafae2e7fdc04d98ca4ec8eaa3ef3, type: 2}
-  - right: {fileID: 2100000, guid: 3a0bed8d544b08d44a6f89eb13a38eaa, type: 2}
+  - up: {instanceID: 0}
+  - down: {instanceID: 0}
+  - left: {instanceID: 0}
+  - right: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -6,7 +6,12 @@ public class Reticle : MonoBehaviour {
 
     private bool check = false;
     private bool shoot = false;
-    private float cCooldown = 10f;
+    private float cCooldown = 11f;
+    public bool gameOver = false;
+
+    public GameObject assassinWin;
+    public GameObject sniperWin;
+    GameObject reveal;
 	// Use this for initialization
 	void Start () {
 		
@@ -14,17 +19,25 @@ public class Reticle : MonoBehaviour {
 
     private void Update()
     {
-
-        if (Input.GetMouseButton(0) & cCooldown > 10f)
+        cCooldown = cCooldown + Time.deltaTime;
+        if (Input.GetMouseButton(1) & cCooldown > 10f)
         {
             check = true;
         }
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(0))
         {
             shoot = true;
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        //other.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        //other.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+    }
     // Update is called once per frame
     void FixedUpdate () {
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -37,23 +50,18 @@ public class Reticle : MonoBehaviour {
             transform.position = Vector3.MoveTowards(
                 new Vector3(transform.position.x, 10, transform.position.z),
                 new Vector3(hit.point.x, 10, hit.point.z),
-                5f*Time.fixedDeltaTime);
-            if (check)
+                5.5f*Time.fixedDeltaTime);
+            /*if (check)
             {
-                if (hit.collider.gameObject.tag == "Player")
-                {
-                    /*add check animation here*/
+                    
+                    reveal = hit.collider.gameObject.transform.GetChild(0).gameObject;
+                    reveal.SetActive(true);
+                
 
                     cCooldown = 0f;
                     check = false;
-                }
-                else if (hit.collider.gameObject.tag == "Crowd")
-                {
-                    /*add check animation here*/
-                    cCooldown = 0f;
-                    check = false;
-                }
-            }
+
+            }*/
         }
         
 
@@ -62,17 +70,26 @@ public class Reticle : MonoBehaviour {
             shoot = false;
             if (Physics.Raycast(transform.position, Vector3.down, out hit))
             {
-                if (hit.collider.gameObject.tag == "Player")
+                if (hit.collider.gameObject.tag == "Player"& !gameOver)
                 {
                     /*game over*/
+                    hit.collider.GetComponent<Assassin_Control>().enabled = false;
+                    hit.collider.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                    sniperWin.SetActive(true);
+                    gameOver = true;
                 }
-                if (hit.collider.gameObject.tag == "Crowd")
+                if (hit.collider.gameObject.tag == "Crowd"|hit.collider.gameObject.tag == "Target")
                 {
                     /*omaigod you shot a civilian, assassin wins*/
+                    hit.collider.GetComponent<AI_Movement>().enabled = false;
+                    hit.collider.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+
                 }
             }
                 
         }
+
+        
         
     }
 }

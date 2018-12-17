@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Mayor
   - Crowd
+  - Target
   layers:
   - Default
   - TransparentFX

@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\AI_Movement.cs" />
     <Compile Include="Assets\Assassin_Control.cs" />
+    <Compile Include="Assets\ColourCopy.cs" />
     <Compile Include="Assets\Reticle.cs" />
     <Compile Include="Assets\Snowfall.cs" />
     <Reference Include="UnityEditor.StandardEvents">
